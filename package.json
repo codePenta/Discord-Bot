@@ -1,0 +1,25 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "My personal discord assistant",
+  "main": "bot.ts",
+  "repository": "https://github.com/codePenta/Discord-Bot.git",
+  "author": "PENTA <fhelm2001@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "watch": "nodemon bot.ts"
+  },
+  "devDependencies": {
+    "discord.js": "^14.15.1",
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.1",
+    "pino": "^8.16.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
+    "yaml": "^2.3.4"
+  },
+  "dependencies": {
+    "pino-pretty": "^10.2.3"
+  }
+}
