@@ -2,12 +2,13 @@ import * as path from "path";
 import fs from "fs";
 import { Client, Collection, Events, REST, Routes } from "discord.js";
 import MainLogger from "../core/logger";
-import Config from "../utils/FileUtils";
+import { Config } from "../utils/FileUtils";
 import { CustomClient } from "../core/customClient";
 
 export default class Manager
 {
     readonly commands: string[] = [];
+    
     private customClient: CustomClient;
     private commandsFolderPath: string = path.join(__dirname, "commands");
     private commandFiles: string[] = fs
@@ -17,7 +18,6 @@ export default class Manager
     constructor(customClient: CustomClient)
     {
         this.customClient = customClient
-
         this.load();
     }
 
@@ -44,7 +44,9 @@ export default class Manager
             console.log(`Started refreshing ${this.commands.length} application (/) commands.`);
             const result: any = await rest.put(
                 Routes.applicationGuildCommands(Config.getClientID(), Config.getGuildID()),
-                { body: this.commands },
+                {
+                    body: this.commands 
+                },
             );
         }
         catch (error)

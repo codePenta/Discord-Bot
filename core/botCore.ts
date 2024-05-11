@@ -1,5 +1,5 @@
 import { Client, Collection, DiscordjsError } from "discord.js";
-import Config from "../utils/FileUtils";
+import { CommandFileReader, Config } from "../utils/FileUtils";
 import MainLogger from "./logger";
 import CommandManager from '../command/commandManager'
 import CommandHandler from "../command/commandHandler";
@@ -18,6 +18,7 @@ export default class Core
         this.token = token;
         this.customClient = customClient;
         this.logger = new MainLogger();
+        new CommandFileReader.setCommandsFromFileSystem(this.customClient);
         this.commandManager = new CommandManager(this.customClient as CustomClient);
         this.commandHandler = new CommandHandler(this.customClient as CustomClient, this.commandManager);
     }

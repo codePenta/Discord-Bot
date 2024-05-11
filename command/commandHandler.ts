@@ -7,7 +7,6 @@ import { CustomClient } from "../core/customClient";
 
 export default class CommandHandler
 {
-    
     private customClient: CustomClient;
     private commandManager: Manager;
 
@@ -18,10 +17,10 @@ export default class CommandHandler
 
         this.commandManager = commandManager;
         this.initHandler();
-        this.loadCommands();
+        this.load();
     }
 
-    private loadCommands()
+    private load()
     {
         const foldersPath = path.join(__dirname, 'commands');
         const commandFiles = fs.readdirSync(foldersPath);
@@ -68,7 +67,8 @@ export default class CommandHandler
             try
             {
                 await command.execute(interaction);
-            } catch (error)
+            } 
+            catch (error)
             {
                 if (interaction.replied || interaction.deferred)
                 {
