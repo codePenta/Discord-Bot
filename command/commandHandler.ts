@@ -17,12 +17,8 @@ export default class CommandHandler
         this.customClient.commands = new Collection();
 
         this.commandManager = commandManager;
-        // this.initHandler();
+        this.initHandler();
         this.loadCommands();
-        this.customClient.commands.forEach(element => {
-            console.log(element);
-            
-        });
     }
 
     private loadCommands()
@@ -38,7 +34,7 @@ export default class CommandHandler
             {   
                 let newCommand = command.data.toJSON();
                 this.customClient.commands.set(command.data.name, command);
-                MainLogger.info(`Added command /${newCommand['name']}`)
+                MainLogger.info(`Added command /${newCommand['name']} to available commands`);
             }
             else
             {

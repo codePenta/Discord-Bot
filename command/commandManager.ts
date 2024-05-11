@@ -32,11 +32,6 @@ export default class Manager
             {   
                 let newCommand = command.data.toJSON();
                 this.commands.push(newCommand);
-                MainLogger.info(`Added command /${newCommand['name']}`)
-            }
-            else
-            {
-                MainLogger.warn(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
             }
         }
     }
