@@ -8,7 +8,7 @@ import { CustomClient } from "../core/customClient";
 export default class Manager
 {
     readonly commands: string[] = [];
-    
+
     private customClient: CustomClient;
     private commandsFolderPath: string = path.join(__dirname, "commands");
     private commandFiles: string[] = fs
@@ -29,7 +29,7 @@ export default class Manager
             const filePath = path.join(this.commandsFolderPath, file);
             const command = require(filePath);
             if ('data' in command && 'execute' in command)
-            {   
+            {
                 let newCommand = command.data.toJSON();
                 this.commands.push(newCommand);
             }
@@ -45,7 +45,7 @@ export default class Manager
             const result: any = await rest.put(
                 Routes.applicationGuildCommands(Config.getClientID(), Config.getGuildID()),
                 {
-                    body: this.commands 
+                    body: this.commands
                 },
             );
         }
