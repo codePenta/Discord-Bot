@@ -30,7 +30,7 @@ export default class CommandHandler
             const filePath = path.join(foldersPath, file);
             const command = require(filePath);
             if ('data' in command && 'execute' in command)
-            {   
+            {
                 let newCommand = command.data.toJSON();
                 this.customClient.commands.set(command.data.name, command);
                 MainLogger.info(`Added command /${newCommand['name']} to available commands`);
@@ -56,7 +56,7 @@ export default class CommandHandler
         {
             if (!interaction.isChatInputCommand()) return;
 
-            const command = this.customClient.commands.get(interaction.commandName);            
+            const command = this.customClient.commands.get(interaction.commandName);
 
             if (!command)
             {
@@ -67,7 +67,7 @@ export default class CommandHandler
             try
             {
                 await command.execute(interaction);
-            } 
+            }
             catch (error)
             {
                 if (interaction.replied || interaction.deferred)

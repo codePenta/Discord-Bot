@@ -1,5 +1,5 @@
 import pino, { Logger, LoggerOptions } from "pino"
-import Config from "../utils/FileUtils"
+import { Config } from "../utils/FileUtils"
 import YAML from "yaml"
 
 export default class MainLogger
@@ -18,13 +18,13 @@ export default class MainLogger
             level: this.config['logger']['pino']['level'],
             enabled: this.config['logger']['pino']['enabled'],
             transport:
-            {   
+            {
                 target: this.config['logger']['pino']['transports']['targets'][0]
             }
         }
 
         MainLogger.pinoLogger = pino(this.options);
-        
+
     }
 
     static info(message: string)
