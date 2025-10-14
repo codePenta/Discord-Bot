@@ -67,7 +67,7 @@ class CommandFileReader
 
     static readonly commands: string[] = [];
 
-    static setCommandsFromFileSystem(customClient: CustomClient)
+    static loadCommandsFromFileSystem(customClient: CustomClient)
     {
         for (const file of CommandFileReader.commandFiles)
         {

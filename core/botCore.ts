@@ -7,7 +7,7 @@ import { CustomClient } from "./customClient";
 
 export default class Core
 {
-    customClient: any;
+    customClient: CustomClient;
     token: string = "";
     logger: MainLogger;
     commandManager: CommandManager;
@@ -18,9 +18,9 @@ export default class Core
         this.token = token;
         this.customClient = customClient;
         this.logger = new MainLogger();
-        CommandFileReader.setCommandsFromFileSystem(this.customClient);
+        CommandFileReader.loadCommandsFromFileSystem(this.customClient);
         this.commandManager = new CommandManager();
-        this.commandHandler = new CommandHandler(this.customClient as CustomClient, this.commandManager);
+        this.commandHandler = new CommandHandler(this.customClient, this.commandManager);
     }
 
     async start()
