@@ -19,7 +19,7 @@ export default class Core
         this.customClient = customClient;
         this.logger = new MainLogger();
         CommandFileReader.setCommandsFromFileSystem(this.customClient);
-        this.commandManager = new CommandManager(this.customClient as CustomClient);
+        this.commandManager = new CommandManager();
         this.commandHandler = new CommandHandler(this.customClient as CustomClient, this.commandManager);
     }
 

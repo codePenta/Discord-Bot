@@ -1,6 +1,6 @@
 import * as path from "path";
 import fs from "fs";
-import { Client, Collection, Events, REST, Routes } from "discord.js";
+import { REST, Routes } from "discord.js";
 import MainLogger from "../core/logger";
 import { Config } from "../utils/FileUtils";
 import { CustomClient } from "../core/customClient";
@@ -9,15 +9,13 @@ export default class Manager
 {
     readonly commands: string[] = [];
 
-    private customClient: CustomClient;
     private commandsFolderPath: string = path.join(__dirname, "commands");
     private commandFiles: string[] = fs
         .readdirSync(this.commandsFolderPath)
         .filter((file) => file.endsWith(".ts"));
 
-    constructor(customClient: CustomClient)
+    constructor()
     {
-        this.customClient = customClient
         this.load();
     }
 
