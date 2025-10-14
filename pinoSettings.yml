@@ -7,7 +7,7 @@ logger:
       targets:
       - pino-pretty
 discord:
-  token: MTM0MjY0NTc3MTAzNTc0MjIzOQ.GSL5Tw.OOYSq-VTyBd4obifbB5lumdHpUTRyomYm4LBq4
+  token: <SECRET_TOKEN>
   clientId: "1342645771035742239"
   publicKey: f3cbb00d8797431b037fd942ba6921df7b4d9e9f0ccf5190aa7e8bc4ce4de522
   guildId: "930398849539919934"

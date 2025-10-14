@@ -2,6 +2,8 @@ import * as path from "path";
 import * as fs from 'fs'
 import YAML from "yaml"
 import { CustomClient } from "../core/customClient";
+import dotenv from 'dotenv';
+dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
 const configPath: string = "pinoSettings.yml";
 
@@ -15,11 +17,33 @@ class Config
     static readFromYamlFile(path: string): string
     {
         const output: string = fs.readFileSync(path, 'utf-8');
-        return output;
+        const translatedOutput = Config.replaceTokensWithValues(output, [process.env.SECRET_TOKEN!], ["<SECRET_TOKEN>"]);
+
+        return translatedOutput;
+    }
+
+    private static replaceTokensWithValues(rawText: string, values: string[], tokens: string[])
+    {
+        let textWithReplacecContents = "";
+
+        tokens.forEach((token: string) => 
+        {
+            let currentValue = values.at(values.indexOf(token));
+            if (!currentValue)
+                return;
+
+            textWithReplacecContents = rawText.replace(token, currentValue);
+        })
+
+        return textWithReplacecContents;
     }
 
     static getDiscordToken(): string
     {
+        let hi = String(YAML.parse(this.readFromYamlFile(configPath))['discord']['token']);
+        console.log(hi);
+
+
         return String(YAML.parse(this.readFromYamlFile(configPath))['discord']['token']);
     }
 
@@ -57,13 +81,14 @@ class CommandFileReader
         }
     }
 
-    public get commands() : string[] {
-        return this.commands.length == 0 ? [ "No commands added yet" ] : this.commands;
+    public get commands(): string[]
+    {
+        return this.commands.length == 0 ? ["No commands added yet"] : this.commands;
     }
 }
 
 export 
 {
-    Config, 
+    Config,
     CommandFileReader
 }

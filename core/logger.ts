@@ -13,6 +13,7 @@ export default class MainLogger
     {
         let configContents = Config.readFromYamlFile(this.yamlFilePath);
         this.config = YAML.parse(configContents);
+
         this.options = {
             name: this.config['logger']['pino']['name'],
             level: this.config['logger']['pino']['level'],

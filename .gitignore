@@ -1,3 +1,4 @@
 pinoSettings.yml
 node_modules
 .dockerignore
+.env
