@@ -1,5 +1,5 @@
 import type { Pool } from "mariadb";
-import type { UserConfig } from "../entities/userConfig";
+import type { UserConfig } from "../entities/UserConfig";
 import type { IUserRepository } from "../services/interfaces/IUserRepository";
 
 export class MariaDBUserRepository implements IUserRepository {

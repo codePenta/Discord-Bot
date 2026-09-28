@@ -4,11 +4,10 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@types/bun": "latest",
-    "eslint": "^10.11.0"
+    "@types/bun": "latest"
   },
   "peerDependencies": {
-    "typescript": "^7"
+    "typescript": "^7.0.0"
   },
   "dependencies": {
     "discord.js": "^14.27.0",

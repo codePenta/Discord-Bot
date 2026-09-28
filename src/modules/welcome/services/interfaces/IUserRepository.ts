@@ -1,4 +1,4 @@
-import type { UserConfig } from "../../entities/userConfig";
+import type { UserConfig } from "../../entities/UserConfig";
 
 export interface IUserRepository {
   get(userID: string): Promise<UserConfig | null>;
