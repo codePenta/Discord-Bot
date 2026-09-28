@@ -19,7 +19,7 @@ export class WelcomeHandler {
 
     if (users != null)
     {      
-      content = renderWelcome(`Welome back ${member.user.username}!`, {
+      content = renderWelcome(`Welome back {user}!`, {
         user: `<@${member.id}>`,
         server: member.guild.name,
         memberCount: member.guild.memberCount,  

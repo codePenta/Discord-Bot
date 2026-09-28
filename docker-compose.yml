@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   discord-bot:
     build: .
     container_name: discord-bot
     restart: unless-stopped
-    env-env_file:
+    env_file:
       - .env.local
     networks:
       - mariadb-default
@@ -13,4 +11,3 @@ services:
 networks:
   mariadb-default:
     external: true
-
