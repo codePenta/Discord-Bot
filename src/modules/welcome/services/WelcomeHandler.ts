@@ -4,10 +4,10 @@ import type { IUserRepository } from "./interfaces/IUserRepository";
 import { renderWelcome } from "../renderWelcome";
 
 export class WelcomeHandler {
-  constructor(private readonly repo: IWelcomeRepository, private userRepo: IUserRepository) {}
+  constructor(private readonly welcomeRepo: IWelcomeRepository, private userRepo: IUserRepository) {}
 
   async handle(member: GuildMember): Promise<void> {
-    const config = await this.repo.get(member.guild.id);    
+    const config = await this.welcomeRepo.get(member.guild.id);    
     const users = await this.userRepo.get(member.id);
 
     if (!config) return;
@@ -15,7 +15,7 @@ export class WelcomeHandler {
     const channel = await member.guild.channels.fetch(config.channelId);
     if (channel?.type !== ChannelType.GuildText) return;
 
-    var content: string | null;
+    let content: string | null;
 
     if (users != null)
     {      

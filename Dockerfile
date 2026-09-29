@@ -11,6 +11,7 @@ WORKDIR /usr/src/app
 
 COPY --from=install /temp/prod/node_modules ./node_modules
 COPY bot.ts tsconfig.json .
+COPY src ./src
 COPY healthcheck.sh /healthcheck.sh
 
 RUN chmod +x /healthcheck.sh

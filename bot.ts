@@ -7,7 +7,6 @@ import { CommandDeployer } from "./src/core/services/CommandDeployer";
 import { PingCommand } from "./src/commands/PingCommand";
 import { createWelcomeModule } from "./src/modules/welcome";
 import { ModalRegistry } from "./src/core/services/ModalRegistry";
-import { WelcomeSetModal } from "./src/modules/welcome/modals/WelcomeSetModal";
 import { ComponentRegistry } from "./src/core/services/ComponentRegistry";
 
 const client = createClient();

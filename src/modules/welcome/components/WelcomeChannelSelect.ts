@@ -1,5 +1,5 @@
 import type { MessageComponentInteraction } from "discord.js";
-import { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from "discord.js";
+import { LabelBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from "discord.js";
 import type { IComponentHandler } from "../../../core/components/interfaces/IComponentHandler";
 
 const CUSTOM_ID = "welcome-set-channel";
@@ -17,15 +17,17 @@ export class WelcomeChannelSelect implements IComponentHandler {
 
     const modal = new ModalBuilder()
       .setCustomId(`welcome-set:${channelId}`)
-      .setTitle("Willkommensnachricht");
+      .setTitle("Welcome message configuration");
 
     const text = new TextInputBuilder()
       .setCustomId("text")
-      .setLabel("Text ({user}, {server}, {count})")
       .setStyle(TextInputStyle.Paragraph)
       .setRequired(true);
 
-    modal.addComponents(new ActionRowBuilder<TextInputBuilder>().addComponents(text));
+    const label = new LabelBuilder()
+        .setLabel("Valid placeholders: {user}, {server}, {count}").setTextInputComponent(text);
+      
+    modal.addLabelComponents(label);
     await interaction.showModal(modal);
   }
 }

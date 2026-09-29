@@ -9,7 +9,7 @@ export class ComponentRegistry {
   }
 
   async handle(interaction: MessageComponentInteraction): Promise<void> {
-    const handler = this.handlers.find((h) => h.matches(interaction.customId));
+    const handler = this.handlers.find((handler) => handler.matches(interaction.customId));
     if (!handler) return;
     await handler.handle(interaction);
   }
