@@ -4,10 +4,10 @@ services:
     container_name: discord-bot
     restart: unless-stopped
     env_file:
-      - .env.local
+      - .env
     networks:
-      - mariadb-default
+      - db-net
 
 networks:
-  mariadb-default:
+  db-net:
     external: true
