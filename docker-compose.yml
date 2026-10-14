@@ -5,9 +5,15 @@ services:
     container_name: discord-bot
     restart: unless-stopped
     env_file:
-      - .env
+      - path: .env
+        required: false
     networks:
       - db-net
+    volumes:
+      - bot-data:/usr/src/app/data
+
+volumes:
+  bot-data:
 
 networks:
   db-net:

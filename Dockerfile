@@ -2,7 +2,6 @@ FROM oven/bun:1-alpine AS install
 WORKDIR /temp/prod
 
 COPY package.json bun.lock .
-RUN bun install
 RUN bun install --frozen-lockfile --production
 
 
@@ -19,6 +18,8 @@ RUN chmod +x /healthcheck.sh
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD /healthcheck.sh
 
+RUN mkdir -p /usr/src/app/data
+RUN chown bun:bun /usr/src/app/data
 USER bun
 
-ENTRYPOINT ["bun", "run", "bot.ts"]
+ENTRYPOINT ["bun", "bot.ts"]
