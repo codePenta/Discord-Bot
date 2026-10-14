@@ -16,9 +16,4 @@ export const env = {
     password: required("DB_PASSWORD"),
     database: required("DB_NAME"),
   },
-  google: {
-    clientId: required("GOOGLE_CLIENT_ID"),
-    clientSecret: required("GOOGLE_CLIENT_SECRET"),
-    refreshToken: required("GOOGLE_REFRESH_TOKEN"),
-  },
 };
