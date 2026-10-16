@@ -1,6 +1,6 @@
 import { Client, GatewayIntentBits, Events, Partials } from "discord.js";
-import { HealthMonitor } from "./services//HealthMonitor";
-import { GracefulShutdown } from "./services/GracefulShutdown";
+import { HealthMonitor } from "./core/services/HealthMonitor";
+import { GracefulShutdown } from "./core/services/GracefulShutdown";
 
 export interface IClientWithHealth extends Client {
   health: HealthMonitor;

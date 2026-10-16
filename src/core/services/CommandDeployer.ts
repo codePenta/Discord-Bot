@@ -10,7 +10,7 @@ export class CommandDeployer {
   constructor(
     private readonly rest: REST,
     private readonly clientId: string,
-    private readonly guildId: string,
+    private readonly guildId: string | undefined,
   ) {}
 
   async deployIfChanged(commands: ICommand[]): Promise<void> {
@@ -23,10 +23,14 @@ export class CommandDeployer {
       return;
     }
 
-    await this.rest.put(Routes.applicationGuildCommands(this.clientId, this.guildId), {
+    const route = this.guildId ? 
+      Routes.applicationGuildCommands(this.clientId, this.guildId) : Routes.applicationCommands(this.clientId);
+
+    await this.rest.put(route, {
       body: json,
     });
-    console.log(`Deployed ${json.length} command(s).`);
+
+    console.log(`Deployed ${json.length} command(s) ${this.guildId ? `to guild ${this.guildId}` : "globally"}.`);
 
     await this.storeHash(hash);
   }

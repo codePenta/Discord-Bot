@@ -1,4 +1,4 @@
-import type { IClientWithHealth } from "../client";
+import type { IClientWithHealth } from "../../client";
 
 export class GracefulShutdown {
   constructor(private client: IClientWithHealth) {}

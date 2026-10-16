@@ -4,7 +4,7 @@ import { pool } from "./src/config/db";
 import { createClient } from "./src/client";
 import { CommandRegistry } from "./src/core/services/CommandRegistry";
 import { CommandDeployer } from "./src/core/services/CommandDeployer";
-import { PingCommand } from "./src/commands/PingCommand";
+import { PingCommand } from "./src/core/commands/PingCommand";
 import { createWelcomeModule } from "./src/modules/welcome";
 import { ModalRegistry } from "./src/core/services/ModalRegistry";
 import { ComponentRegistry } from "./src/core/services/ComponentRegistry";
